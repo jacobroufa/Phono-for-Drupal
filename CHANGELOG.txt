@@ -1,0 +1,5 @@
+// $Id$
+
+Phono 6.x-1.x, 2010-10-17
+-------------------------
+Initial release of phono module. Compatible with Drupal 6.x.

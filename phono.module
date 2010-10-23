@@ -1,0 +1,45 @@
+<?php
+// $Id$
+// Developed 2010 - Jacob M. Roufa
+
+/**
+ * Phono implements the jQuery based Phono API and formats the
+ * information passed to it from the CCK Phone field into a way
+ * for users to call a number of choice within their browser session.
+ */
+
+function phono_init() {
+  $base = drupal_get_path('module', 'phono');
+  drupal_add_js($base .'/jquery.phono.js', 'module', 'header', FALSE, TRUE, TRUE);
+  drupal_add_js($base .'/phono.js', 'module', 'header', FALSE, TRUE, TRUE);
+  drupal_add_css($base .'/phono.css', 'module');
+}
+
+function phono_field_formatter_info() {
+  return array(
+    'button' => array(
+      'label' => t('Call Button'),
+      'field types' => array('ca_phone'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'description' => t('Displays a call button as a javascript handler for linking with the Phono jQuery API.'),
+    ),
+  );
+
+}
+
+function phono_theme() {
+  return array(
+    'phono_formatter_button' => array(
+      'arguments' => array('element' => NULL),
+    ),
+  );
+
+}
+
+function theme_phono_formatter_button($element) {
+  $output = '';
+  $output .= $element['#item']['value'];
+
+  return '<div class="phono"><input type="button" class="call" disabled="true" value="Call" /><span class="number">' . $output . '</span></div><span class="status"></span>';
+
+}

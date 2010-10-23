@@ -1,0 +1,8 @@
+; $Id$
+name = Phono
+description = "Phono defines a field formatter for the CCK Phone field to use the new jQuery Phono API."
+package = CCK
+dependencies[] = content
+dependencies[] = phone
+dependencies[] = jquery_update
+core = 6.x
